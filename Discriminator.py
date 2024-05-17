@@ -27,7 +27,7 @@ class DiscriminatorConvLayer(tf.keras.Model):
         self.conv_layers.append(PAD())
         self.conv_layers.append(
             tfkl.Conv2D(
-                filters, kernel_size=3, strides=1, 
+                filters, kernel_size=3, strides=2, 
                 padding="valid", kernel_initializer=self.initializer
                 )
             )
@@ -88,7 +88,7 @@ class DiscriminatorConv(tf.keras.Model):
                 )
             )
         
-        self.conv_layers.append(tfkl.AveragePooling2D(2))
+        ###self.conv_layers.append(tfkl.AveragePooling2D(2))
         
 
     def call(self, inputs): 
