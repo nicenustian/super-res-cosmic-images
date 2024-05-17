@@ -13,6 +13,7 @@ Generate super resolution two dimensional fields using Multiscale Wasserstein Ge
 4. Add power spectrum and PDF losses to both Discriminator and Generator.
 5. Initially the learning is limited by adversarial losses but in later stages by PDF and Power spectrum losses, which is very important to generate data with better statistical properties.
 6. There is no need to train Discriminator for more epochs both Discrimnator and Generator can be together.
+7. Use Convolutional stride two to reduce the spatial dims in Discrimnator not average pooling for imgaes, otherwise it removes the Cosmic Web structure. 
 
 ## 2d Density fields Learning 
 
