@@ -32,4 +32,13 @@ python main.py --num_examples 5000 --epochs 1000 --batch_size 32 --lr 1e-4 --out
 ```
 
 
+Please provide the 2d dimensional fields for each resized version of a simulation in dataset_dir folder. Each file should be either .npy or .hdf5. The field name's should be output as dictionary, see example below. All files are from one simulation ran at one particular volume. Please make sure the code reads them in order of lowest to highest resolution. The order of fields read is displayed in the start. If it is not read in order rename files such that file name as numbers with starting name as file string to filter files in a given folder, such as model_train_1.py, moldel_train_2.py... Here model_train_1.py is lowest resoluton file. Please use the same field names while providing the quantity names in main.py.  
 
+    # Save multiple named arrays to the same file
+    # each field shape
+    data_dict = {'density': density, 'temp': temp, 'vpec': vpec, 'nHI' : nHI}
+
+    save_file = dir_output+'model_test.npy'
+    print('saving ', save_file)
+    with open(save_file, 'wb') as f:
+          np.savez(f, **data_dict)
