@@ -13,11 +13,11 @@ import pickle
 ###############################################################################
 
 def train_model(output_dir, datasets, data, keys_list, examples=32, 
-                    box_sizes=[160, 80, 40],
+                    box_sizes=[160, 160, 160, 160],
                     batch_size_per_replica=32, epochs=1000, 
                     lr=1e-4, latent_dim=32, 
-                    dis_filters=[[64, 128, 256]],
-                    gen_filters=[[256, 128, 64], [64, 32, 32]], 
+                    dis_filters=[[32], [64], [128], [256]],
+                    gen_filters=[[256], [128], [64], [32]], 
                     load_model=False,
                     seed=1234):
 
@@ -53,11 +53,7 @@ def train_model(output_dir, datasets, data, keys_list, examples=32,
     print('steps_per_epoch', steps_per_epoch)
     print('step boundaries for lr', boundaries)
     print('initializer', initializer)
-    
-    ###########################################################################
-    # MS-WGAN-GP models
-    ###########################################################################
-    
+ 
     # Initialize generators and discriminators for each scale
     with mirrored_strategy.scope():
          
