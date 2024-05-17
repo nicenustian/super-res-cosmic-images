@@ -28,15 +28,6 @@ class GANMonitor(tf.keras.callbacks.Callback):
         self.batch_size = batch_size
         self.last_loss_saved = np.Infinity
         self.losses = []
-        
-    # Define a function to monitor discriminator losses
-    def has_stabilized(self, losses, patience=10):
-        
-        if np.mean(np.abs(losses[-patience:])) < 5:
-            return True
-        else:
-            False
-
 
     def on_epoch_end(self, epoch, logs=None):
                     
@@ -52,7 +43,6 @@ class GANMonitor(tf.keras.callbacks.Callback):
             num_to_generate = self.batch_size
             
         # If the batch size for fake_images is greater, randomly select a subset
-        indices = tf.random.shuffle(tf.range(tf.shape(self.real_list[0])[0]))[:num_to_generate]        
         noise = tf.random.normal(shape=(num_to_generate, self.latent_dim))
         
         # the generator output can be significanlty different in start
@@ -128,9 +118,7 @@ class GANMonitor(tf.keras.callbacks.Callback):
         #######################################################################
 
         # ignore initial epochs as WGAN is not stable
-        if logs is not None and epoch>10:
-            #if self.has_stabilized(self.losses):
-                #closer to zero the better
+        if logs is not None and epoch>200:
                 if np.abs(self.last_loss_saved) > np.abs(self.losses[-1]):
                 
                     print(f"Saving model at epoch {epoch} improved from {self.last_loss_saved} to {self.losses[-1]}")
