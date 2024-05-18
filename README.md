@@ -26,10 +26,8 @@ Generate super resolution two dimensional fields using Multiscale Wasserstein Ge
 https://github.com/nicenustian/super-res-cosmic-images/assets/111900566/24929301-9f7f-46fc-91e7-aa5a8b41c9fb
 
 
-
-
 ```command
-python main.py --num_examples 5000 --epochs 1000 --batch_size 32 --lr 1e-4 --output_dir ml_outputs_all
+python main.py --num_examples 5000 --epochs 1000 --batch_size 8 --lr 1e-4 --output_dir ml_outputs_all
 ```
 
 
