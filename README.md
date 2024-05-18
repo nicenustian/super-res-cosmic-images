@@ -8,7 +8,7 @@ Generate super resolution two dimensional fields using Multiscale Wasserstein Ge
 ## Lessons Learned
 
 1. Keep learning rate around 1e-4 and epochs more than 500 for better convergence. However, if the highest resolution image is less than 256x256 you can get good results with larger learning rates as well.
-2. Lower batches is preferred in particular less than 64.
+2. Lower batches is preferred such as 8.
 3. Using 1x1 convolution when combining inputs at different resolutions after concatenation in Discriminator gives unstable traning. Only concatenating as channels works best. 
 4. Add power spectrum and PDF losses to both Discriminator and Generator.
 5. Initially the learning is limited by adversarial losses but in later stages by PDF and Power spectrum losses, which is very important to generate data with better statistical properties.
