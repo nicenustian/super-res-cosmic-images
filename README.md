@@ -8,7 +8,7 @@ Generate super resolution two dimensional fields using Multiscale Wasserstein Ge
 ## Lessons Learned
 
 1. Keep learning rate around 1e-4 and epochs more than 500 for better convergence. However, if the highest resolution image is less than 256x256 you can get good results with larger learning rates as well.
-2. Lower batches is preferred such as 8.
+2. Batch size (such as 128) should be big enough to capture large scale structure.
 3. Using 1x1 convolution when combining inputs at different resolutions after concatenation in Discriminator gives unstable traning. Only concatenating as channels works best. 
 4. Add power spectrum and PDF losses to both Discriminator and Generator.
 5. Initially the learning is limited by adversarial losses but in later stages by PDF and Power spectrum losses, which is very important to generate data with better statistical properties.
@@ -27,7 +27,7 @@ https://github.com/nicenustian/super-res-cosmic-images/assets/111900566/24929301
 
 
 ```command
-python main.py --num_examples 5000 --epochs 1000 --batch_size 8 --lr 1e-4 --output_dir ml_outputs_all
+python main.py --num_examples 5000 --epochs 1000 --batch_size 128 --lr 1e-4 --output_dir ml_outputs_all
 ```
 
 
