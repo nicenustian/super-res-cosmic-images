@@ -24,7 +24,7 @@ def main():
     parser.add_argument("--num_examples", default="5000")
     parser.add_argument("--latent_dim", default="32", help="Latent space pixels, depends on lowest-res image")
     parser.add_argument("--lr", default="1e-4", help="1e-4 is good strarting lr for 256x256 hi-res images")
-    parser.add_argument("--batch_size", default="8", help="keep it small under 8")
+    parser.add_argument("--batch_size", default="128", help="keep it large enough to capture large scale structure")
     parser.add_argument('--box_sizes', action='store',
                         default=[160, 160, 160, 160], 
                         type=int, nargs='*',
